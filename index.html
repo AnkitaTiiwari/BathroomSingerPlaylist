@@ -58,20 +58,24 @@
       openCurrentOnYouTube();
     });
 
-    // Background load check (debug): tries to load assets/bg.png and shows a small notice if it fails.
+    // Background load check (silent): tries assets/bg.png then assets/bg.gif; logs only to console (no visible banner).
     (function(){
-      const img = new Image();
-      img.onload = function(){
-        console.log('Background image loaded');
-        document.body.classList.add('bg-ok');
-      };
-      img.onerror = function(){
-        console.warn('Background image failed to load');
-        const b = document.createElement('div');
-        b.style.position='fixed';b.style.left=0;b.style.right=0;b.style.top=0;b.style.padding='8px';b.style.background='rgba(255,60,60,0.95)';b.style.color='#fff';b.style.zIndex=9999;b.style.fontSize='13px';b.textContent='Background image failed to load. If you provided an animated GIF, try uploading it as assets/bg.gif instead.';
-        document.body.appendChild(b);
-      };
-      img.src = 'assets/bg.png?cb=' + Date.now();
+      function tryLoad(src){
+        return new Promise((resolve,reject)=>{
+          const img = new Image();
+          img.onload = ()=>resolve(src);
+          img.onerror = ()=>reject(src);
+          img.src = src + '?cb=' + Date.now();
+        });
+      }
+      tryLoad('assets/bg.png')
+        .then(s=>console.log('Background image loaded:', s))
+        .catch(()=>{
+          console.warn('assets/bg.png failed, trying assets/bg.gif');
+          return tryLoad('assets/bg.gif');
+        })
+        .then(s=>console.log('Background image loaded:', s))
+        .catch(()=>console.warn('No background image loaded'));
     })();
 
     fetch('playlist.json')
