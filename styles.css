@@ -1,10 +1,23 @@
 :root{--bg:#f7f7fb;--card:#fff;--accent:#e91e63;--muted:#555}
 *{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans',Helvetica,Arial}
-body{margin:0;background:var(--bg);color:var(--muted);display:flex;align-items:center;justify-content:center;min-height:100vh}
-main{width:min(800px,92%);background:var(--card);padding:28px;border-radius:12px;box-shadow:0 6px 30px rgba(10,10,20,.06)}
+html,body{height:100%}
+body{margin:0;color:var(--muted);display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--bg);}
+#bg{position:fixed;inset:0;background-color:#e8f0f8;background-size:cover;background-position:center;z-index:0}
+/* By default, the site looks for assets/bg.gif. Replace that file with the animated GIF you provide. */
+#bg{background-image: url('assets/bg.gif');background-repeat:no-repeat;background-size:cover;}
+.overlay{position:fixed;inset:0;background:linear-gradient(rgba(255,255,255,0.6),rgba(255,255,255,0.6));z-index:1}
+main{width:min(800px,92%);background:var(--card);padding:28px;border-radius:12px;box-shadow:0 6px 30px rgba(10,10,20,.08);position:relative;z-index:2}
 h1{margin:0 0 6px;color:#111}
-#playlist{margin-top:14px;padding-left:18px}
-#playlist li{margin:10px 0}
-.link{margin-left:8px;color:var(--accent);text-decoration:none}
-.link:hover{text-decoration:underline}
+.controls{display:flex;align-items:center;margin-top:10px}
+.controls button{background:#fff;border:1px solid #ddd;padding:8px 10px;border-radius:8px;margin-right:8px;cursor:pointer}
+.controls button:hover{box-shadow:0 3px 10px rgba(0,0,0,0.06)}
+#playlist{margin-top:14px;padding-left:6px;list-style:none}
+#playlist li{margin:10px 0;display:flex;align-items:center;gap:8px}
+.track-title{flex:1;cursor:pointer}
+.icon-button{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:8px;background:#fff;border:1px solid #eee;text-decoration:none}
+.icon-button svg{display:block}
 footer{margin-top:18px;font-size:0.9rem;color:#666}
+@media (max-width:520px){
+  main{padding:18px}
+  .controls button{padding:6px 8px}
+}
