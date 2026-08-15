@@ -5,12 +5,18 @@ body{margin:0;color:var(--muted);display:flex;align-items:center;justify-content
 #bg{position:fixed;inset:0;background-color:#e8f0f8;background-size:cover;background-position:center;z-index:0}
 /* By default, the site looks for assets/bg.gif. Replace that file with the animated GIF you provide. */
 #bg{background-image: url('assets/bg.gif'), url('assets/bg.png'); background-repeat:no-repeat;background-size:cover;}
-..overlay{position:fixed;inset:0;background:linear-gradient(rgba(255,255,255,0.28),rgba(255,255,255,0.28));z-index:1}
-main{width:min(800px,92%);background:rgba(255,255,255,0.9);padding:28px;border-radius:12px;box-shadow:0 6px 30px rgba(10,10,20,.08);position:relative;z-index:2}
-h1{margin:0 0 6px;color:#111}
-.controls{display:flex;align-items:center;margin-top:10px}
-.controls button{background:#fff;border:1px solid #ddd;padding:8px 10px;border-radius:8px;margin-right:8px;cursor:pointer}
-.controls button:hover{box-shadow:0 3px 10px rgba(0,0,0,0.06)}
+.overlay{display:none}
+main{width:100%;max-width:none;background:transparent;padding:0;border-radius:0;box-shadow:none;position:relative;z-index:2;display:flex;align-items:center;justify-content:center;min-height:100vh}
+/* hide heading/footer for minimal UI */
+h1, footer, p{display:none}
+.controls{display:flex;align-items:center;gap:18px}
+.controls.big button, .controls button{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:18px 22px;border-radius:12px;font-size:20px;cursor:pointer;backdrop-filter: blur(4px)}
+.controls button:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.25)}
+.now{color:#fff;font-weight:600;font-size:16px;margin-left:12px;text-shadow:0 2px 8px rgba(0,0,0,0.6)}
+@media (max-width:520px){
+  .controls.big button{padding:12px 14px;font-size:18px}
+}
+
 #playlist{margin-top:14px;padding-left:6px;list-style:none}
 #playlist li{margin:10px 0;display:flex;align-items:center;gap:8px}
 .track-title{flex:1;cursor:pointer}

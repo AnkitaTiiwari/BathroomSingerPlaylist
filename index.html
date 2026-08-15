@@ -12,21 +12,12 @@
   <div class="overlay"></div>
 
   <main>
-    <h1>WannaBeSingers</h1>
-    <p>Sing-along — 20 Hindi tracks people love to belt out in the shower.</p>
-
-    <div class="controls">
-      <button id="prev" title="Previous">◀ Prev</button>
-      <button id="open" title="Open selected on YouTube">▶ Open</button>
-      <button id="next" title="Next">Next ▶</button>
-      <span id="now" aria-live="polite" style="margin-left:12px;color:#333"></span>
+    <div class="controls big" role="region" aria-label="Playback controls">
+      <button id="prev" title="Previous" aria-label="Previous track">◀</button>
+      <button id="open" title="Open selected on YouTube" aria-label="Open track">▶</button>
+      <button id="next" title="Next" aria-label="Next track">▶</button>
+      <div id="now" class="now" aria-live="polite" style="margin-left:18px"></div>
     </div>
-
-    <!-- playlist hidden on purpose; controls only -->
-
-    <footer>
-      <p>Click track buttons to open YouTube or Spotify in a new tab. Replace assets/bg.gif with the animated image you provide.</p>
-    </footer>
   </main>
 
   <script>
