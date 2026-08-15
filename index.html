@@ -67,6 +67,22 @@
       openCurrentOnYouTube();
     });
 
+    // Background load check (debug): tries to load assets/bg.png and shows a small notice if it fails.
+    (function(){
+      const img = new Image();
+      img.onload = function(){
+        console.log('Background image loaded');
+        document.body.classList.add('bg-ok');
+      };
+      img.onerror = function(){
+        console.warn('Background image failed to load');
+        const b = document.createElement('div');
+        b.style.position='fixed';b.style.left=0;b.style.right=0;b.style.top=0;b.style.padding='8px';b.style.background='rgba(255,60,60,0.95)';b.style.color='#fff';b.style.zIndex=9999;b.style.fontSize='13px';b.textContent='Background image failed to load. If you provided an animated GIF, try uploading it as assets/bg.gif instead.';
+        document.body.appendChild(b);
+      };
+      img.src = 'assets/bg.png?cb=' + Date.now();
+    })();
+
     fetch('playlist.json')
       .then(r=>r.json())
       .then(list => {

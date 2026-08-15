@@ -5,8 +5,8 @@ body{margin:0;color:var(--muted);display:flex;align-items:center;justify-content
 #bg{position:fixed;inset:0;background-color:#e8f0f8;background-size:cover;background-position:center;z-index:0}
 /* By default, the site looks for assets/bg.gif. Replace that file with the animated GIF you provide. */
 #bg{background-image: url('assets/bg.gif'), url('assets/bg.png'); background-repeat:no-repeat;background-size:cover;}
-.overlay{position:fixed;inset:0;background:linear-gradient(rgba(255,255,255,0.6),rgba(255,255,255,0.6));z-index:1}
-main{width:min(800px,92%);background:var(--card);padding:28px;border-radius:12px;box-shadow:0 6px 30px rgba(10,10,20,.08);position:relative;z-index:2}
+..overlay{position:fixed;inset:0;background:linear-gradient(rgba(255,255,255,0.28),rgba(255,255,255,0.28));z-index:1}
+main{width:min(800px,92%);background:rgba(255,255,255,0.9);padding:28px;border-radius:12px;box-shadow:0 6px 30px rgba(10,10,20,.08);position:relative;z-index:2}
 h1{margin:0 0 6px;color:#111}
 .controls{display:flex;align-items:center;margin-top:10px}
 .controls button{background:#fff;border:1px solid #ddd;padding:8px 10px;border-radius:8px;margin-right:8px;cursor:pointer}
