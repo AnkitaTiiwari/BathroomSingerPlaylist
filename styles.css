@@ -1,0 +1,10 @@
+:root{--bg:#f7f7fb;--card:#fff;--accent:#e91e63;--muted:#555}
+*{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,'Noto Sans',Helvetica,Arial}
+body{margin:0;background:var(--bg);color:var(--muted);display:flex;align-items:center;justify-content:center;min-height:100vh}
+main{width:min(800px,92%);background:var(--card);padding:28px;border-radius:12px;box-shadow:0 6px 30px rgba(10,10,20,.06)}
+h1{margin:0 0 6px;color:#111}
+#playlist{margin-top:14px;padding-left:18px}
+#playlist li{margin:10px 0}
+.link{margin-left:8px;color:var(--accent);text-decoration:none}
+.link:hover{text-decoration:underline}
+footer{margin-top:18px;font-size:0.9rem;color:#666}

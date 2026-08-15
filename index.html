@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Hindi Shower Playlist</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>Hindi Shower Playlist</h1>
+    <p>Sing-along — 20 Hindi tracks people love to belt out in the shower.</p>
+    <ul id="playlist"></ul>
+    <footer>
+      <p>Links open a search page on YouTube and Spotify so you can stream the track.</p>
+    </footer>
+  </main>
+  <script>
+    fetch('playlist.json')
+      .then(r=>r.json())
+      .then(list => {
+        const el = document.getElementById('playlist');
+        list.forEach(item=>{
+          const li = document.createElement('li');
+          const title = document.createElement('strong');
+          title.textContent = item.title;
+          li.appendChild(title);
+
+          const yt = document.createElement('a');
+          yt.href = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(item.query);
+          yt.target = '_blank';
+          yt.rel = 'noopener';
+          yt.textContent = 'Listen on YouTube';
+          yt.className = 'link';
+
+          const sp = document.createElement('a');
+          sp.href = 'https://open.spotify.com/search/' + encodeURIComponent(item.query);
+          sp.target = '_blank';
+          sp.rel = 'noopener';
+          sp.textContent = 'Listen on Spotify';
+          sp.className = 'link';
+
+          li.appendChild(document.createTextNode(' — '));
+          li.appendChild(yt);
+          li.appendChild(document.createTextNode(' | '));
+          li.appendChild(sp);
+
+          el.appendChild(li);
+        });
+      })
+      .catch(()=>{
+        document.getElementById('playlist').textContent = 'Could not load playlist.';
+      });
+  </script>
+</body>
+</html>
